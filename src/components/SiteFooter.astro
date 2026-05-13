@@ -74,7 +74,9 @@ const footerFocusAreas = [
 					aria-label="Request a consultation"
 				>
 					<div class="site-footer__field">
-						<label class="site-footer__label" for="footer-name">Name</label>
+						<label class="site-footer__label" for="footer-name">
+							Name <span class="site-footer__req" aria-hidden="true">*</span>
+						</label>
 						<input
 							class="site-footer__input"
 							type="text"
@@ -83,10 +85,13 @@ const footerFocusAreas = [
 							autocomplete="name"
 							placeholder="John Smith"
 							required
+							aria-required="true"
 						/>
 					</div>
 					<div class="site-footer__field">
-						<label class="site-footer__label" for="footer-email">Email</label>
+						<label class="site-footer__label" for="footer-email">
+							Email <span class="site-footer__req" aria-hidden="true">*</span>
+						</label>
 						<input
 							class="site-footer__input"
 							type="email"
@@ -96,6 +101,7 @@ const footerFocusAreas = [
 							inputmode="email"
 							placeholder="your.name@email.com"
 							required
+							aria-required="true"
 						/>
 					</div>
 					<div class="site-footer__field">
@@ -105,7 +111,7 @@ const footerFocusAreas = [
 						</span>
 						<div class="site-footer__phone-wrap">
 							<div class="site-footer__phone-affix" aria-hidden="true">
-								<abbr class="site-footer__phone-gb" title="United Kingdom">GB</abbr>
+								<span class="site-footer__phone-flag" title="United Kingdom">🇬🇧</span>
 								<span class="site-footer__phone-cc">+44</span>
 							</div>
 							<input
@@ -115,7 +121,7 @@ const footerFocusAreas = [
 								name="phone"
 								autocomplete="tel"
 								inputmode="tel"
-								placeholder="116 220 1662"
+								placeholder="+44 then…"
 								aria-describedby="footer-phone-desc"
 							/>
 						</div>
@@ -143,8 +149,16 @@ const footerFocusAreas = [
 						/>
 					</div>
 					<div class="site-footer__field site-footer__field--checkbox">
-						<input type="checkbox" id="footer-consent" name="consent" value="yes" required />
+						<input
+							type="checkbox"
+							id="footer-consent"
+							name="consent"
+							value="yes"
+							required
+							aria-required="true"
+						/>
 						<label class="site-footer__check-label" for="footer-consent">
+							<span class="site-footer__req site-footer__req--inline" aria-hidden="true">*</span>
 							I understand Keystone Renovations will use these details to respond to my enquiry only. See our{' '}
 							<a href="/terms/">Terms</a> and <a href="/cookies/">Cookies</a> pages for more.
 						</label>
@@ -501,8 +515,25 @@ const footerFocusAreas = [
 
 	.site-footer__input::placeholder,
 	.site-footer__textarea::placeholder {
-		color: color-mix(in srgb, var(--color-dark-gray) 42%, var(--color-gray));
+		color: color-mix(in srgb, var(--color-dark-gray) 16%, var(--color-white));
 		opacity: 1;
+	}
+
+	.site-footer__select:required:invalid {
+		color: color-mix(in srgb, var(--color-dark-gray) 18%, var(--color-white-smoke));
+	}
+
+	.site-footer__select option {
+		color: var(--color-dark-gray);
+	}
+
+	.site-footer__req {
+		color: var(--color-dark-khaki);
+		font-weight: 700;
+	}
+
+	.site-footer__req--inline {
+		margin-right: 0.2em;
 	}
 
 	.site-footer__input:hover,
@@ -546,13 +577,11 @@ const footerFocusAreas = [
 		text-align: center;
 	}
 
-	.site-footer__phone-gb {
-		font-size: 0.6875rem;
-		line-height: 1.1;
-		letter-spacing: 0.14em;
-		text-decoration: none;
-		cursor: default;
-		border: none;
+	.site-footer__phone-flag {
+		display: block;
+		font-size: 1.35rem;
+		line-height: 1;
+		font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	}
 
 	.site-footer__phone-cc {

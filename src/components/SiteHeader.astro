@@ -70,28 +70,28 @@ const homeUrl = '/';
 				/>
 			</svg>
 		</button>
+	</div>
 
-		<div class="site-header__end" id="site-header-end">
-			<div class="site-header__sheet">
-				<div class="site-header__nav-wrap">
-					<nav class="site-nav" aria-label="Primary">
-						<ul>
-							{
-								nav.map(({ href, label }) => (
-									<li>
-										<a class="type-header-16-400" href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
-											{label}
-										</a>
-									</li>
-								))
-							}
-						</ul>
-					</nav>
-				</div>
+	<div class="site-header__end" id="site-header-end">
+		<div class="site-header__sheet">
+			<div class="site-header__nav-wrap">
+				<nav class="site-nav" aria-label="Primary">
+					<ul>
+						{
+							nav.map(({ href, label }) => (
+								<li>
+									<a class="type-header-16-400" href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+										{label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
 
-				<div class="site-header__cta-group">
-					<a class="site-header__cta type-button-16-700" href="/contact/#discuss">Discuss Your Project</a>
-				</div>
+			<div class="site-header__cta-group">
+				<a class="site-header__cta type-button-16-700" href="/contact/#discuss">Discuss Your Project</a>
 			</div>
 		</div>
 	</div>

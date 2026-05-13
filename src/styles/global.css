@@ -125,7 +125,8 @@ body.site-body > main {
 	background: transparent;
 	box-shadow: none;
 	border: none;
-	transition: grid-template-rows 0.34s var(--motion-ease-out-expo);
+	/* Instant show/hide — no panel animation */
+	transition: none;
 }
 
 .site-header__sheet {

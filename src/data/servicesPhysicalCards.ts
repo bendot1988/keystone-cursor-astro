@@ -69,17 +69,31 @@ export const servicesPhysicalCards: readonly ServicesPhysicalCard[] = [
 		],
 	},
 	{
-		title: 'Décor and landscaping',
-		body: 'Our decorators breathe new life into tired spaces; we transform outdoor areas into usable extensions of your home.',
+		title: 'Interior décor',
+		body: 'Our decorators breathe new life into tired spaces with careful preparation, colour, and finish.',
 		iconSrc: '/icons/how-we-help/wall-coverings.png',
 		sectionImage: '/images/services/decor-landscaping.png',
 		pageIntro:
-			'Inside and out, the final layers are what people feel first. Experienced decorators lift interiors with care and patience; outside, we shape gardens and boundaries into spaces you actually use—extensions of your home, not an afterthought.',
+			'The final layers are what you feel every day. Experienced decorators lift interiors with care and patience—proper preparation, colour chosen for light and use, and finishes that last beyond the first walk-through.',
 		bullets: [
 			'Interior decoration: preparation, colour, and finishes executed to a lasting standard.',
 			'Wall and ceiling treatments chosen for the room’s light, use, and wear patterns.',
+			'Coordinated sequencing with wet trades and first fixes so finishes are not compromised.',
+			'Snagging that treats paint, joinery details, and ironmongery as part of one calm handover.',
+		],
+	},
+	{
+		title: 'Landscaping',
+		body: 'We transform outdoor spaces, making them attractive and usable extensions of your property.',
+		iconSrc: '/icons/how-we-help/landscaping.png',
+		sectionImage: '/images/services/decor-landscaping.png',
+		pageIntro:
+			'Outside, we shape gardens and boundaries into spaces you actually use—not an afterthought tacked onto the build. Drainage, access, levels, and materials are planned so the garden works with your home through the seasons.',
+		bullets: [
 			'Landscaping and external works planned for drainage, access, and year-round appeal.',
-			'Coordinated handover so interior calm and exterior pride arrive together.',
+			'Levels and materials chosen for how you move through and use the space day to day.',
+			'Coordination with structural and services work so boundaries, runs, and finishes line up cleanly.',
+			'Handover aligned with interior completion so the whole property feels finished together.',
 		],
 	},
 ] as const;

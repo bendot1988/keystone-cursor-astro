@@ -7,6 +7,10 @@ const physicallyIntro =
 
 const personalIntro =
 	'We are the Keystone to your Project \u2013 the centre point from which all else depends.';
+
+/** Tab strip icons (client assets in `public/icons/how-we-help/`). */
+const tabPhysicallyIconSrc = '/icons/how-we-help/tab-physically-hammer.png';
+const tabPhilosophyIconSrc = '/icons/how-we-help/tab-philosophy-users.png';
 ---
 
 <section class="how-we-help" aria-labelledby="how-we-help-heading">
@@ -24,10 +28,14 @@ const personalIntro =
 				data-how-tab="physical"
 			>
 				<span class="how-we-help__tab-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M10.5 14.5 4 21" />
-						<path d="M14 3l7 7-9 9-4-4 9-9z" />
-					</svg>
+					<img
+						class="how-we-help__tab-icon-img"
+						src={tabPhysicallyIconSrc}
+						alt=""
+						width="28"
+						height="28"
+						decoding="async"
+					/>
 				</span>
 				<span class="how-we-help__tab-label">Physically</span>
 				<span class="how-we-help__tab-sub">The structural elements</span>
@@ -42,10 +50,14 @@ const personalIntro =
 				data-how-tab="personal"
 			>
 				<span class="how-we-help__tab-icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-						<circle cx="12" cy="8" r="3.5" />
-						<path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" />
-					</svg>
+					<img
+						class="how-we-help__tab-icon-img"
+						src={tabPhilosophyIconSrc}
+						alt=""
+						width="28"
+						height="28"
+						decoding="async"
+					/>
 				</span>
 				<span class="how-we-help__tab-label">The Philosophy</span>
 				<span class="how-we-help__tab-sub">Project Management</span>
@@ -234,8 +246,19 @@ const personalIntro =
 		opacity: 0.92;
 	}
 
-	.how-we-help__tab:not(.is-active) .how-we-help__tab-icon {
-		color: color-mix(in srgb, var(--color-dark-gray) 72%, var(--color-gray));
+	.how-we-help__tab-icon-img {
+		display: block;
+		width: 1.75rem;
+		height: 1.75rem;
+		object-fit: contain;
+	}
+
+	.how-we-help__tab.is-active .how-we-help__tab-icon-img {
+		filter: brightness(0) invert(1);
+	}
+
+	.how-we-help__tab:not(.is-active) .how-we-help__tab-icon-img {
+		opacity: 0.78;
 	}
 
 	.how-we-help__tab-label {

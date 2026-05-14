@@ -21,7 +21,7 @@ export interface PhilosophyCard {
 
 export const philosophyCards = [
 	{
-		title: 'Consideration to your Lifestyle Needs',
+		title: 'Consideration to your lifestyle needs',
 		body: 'We are the Single point of contact for you. We structure our role to align with your lifestyle ensuring the project and your life, stay on track! We assess the following elements to ensure we are working for you the way you need us to.',
 		iconSrc: '/icons/how-we-help/personal/tea.png',
 		sectionImage: '/images/how-we-work/lifestyle-needs.png',
@@ -50,7 +50,7 @@ export const philosophyCards = [
 		],
 	},
 	{
-		title: 'Reliability & Trustworthiness',
+		title: 'Reliability and trustworthiness',
 		body: 'We will turn up and deliver as promised. We will treat your property like it is our own. Our testimonies testify to this.',
 		iconSrc: '/icons/how-we-help/personal/shield.png',
 		sectionImage: '/images/how-we-work/time-reliability.png',
@@ -63,7 +63,7 @@ export const philosophyCards = [
 		],
 	},
 	{
-		title: 'Know-How',
+		title: 'Know-how',
 		body: 'We work with teams of experienced crafts people and trades all of whom have decades of experience. There is no such thing as a renovating problem that we can\u2019t find a solution to.',
 		iconSrc: '/icons/how-we-help/personal/bulb.png',
 		sectionImage: '/images/how-we-work/know-how.png',

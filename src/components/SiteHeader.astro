@@ -33,15 +33,17 @@ const homeUrl = '/';
 
 <header class="site-header" id="site-header">
 	<div class="site-header__inner">
-		<a class="site-logo" href={homeUrl} aria-label={`${siteConfig.name} — home`}>
-			<img
-				class="site-logo__img"
-				src="/brand/keystone-logo.png"
-				alt=""
-				width="889"
-				height="285"
-				decoding="async"
-			/>
+		<a class="site-logo site-logo--keystone" href={homeUrl} aria-label={`${siteConfig.name} — home`}>
+			<span class="site-logo__keystone">
+				<img
+					class="site-logo__img"
+					src="/brand/keystone-logo.png"
+					alt=""
+					width="889"
+					height="285"
+					decoding="async"
+				/>
+			</span>
 		</a>
 
 		<button

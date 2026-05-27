@@ -1,172 +1,71 @@
 ---
-import { philosophyCards } from '../data/philosophyCards';
-import { servicesPhysicalCards } from '../data/servicesPhysicalCards';
-
-const physicallyIntro =
-	'We listen carefully to the physical elements of what your renovation is asking of us:';
-
-const personalIntro =
-	'We are the Keystone to your Project \u2013 the centre point from which all else depends.';
-
-/** Tab strip icons (client assets in `public/icons/how-we-help/`). */
-const tabPhysicallyIconSrc = '/icons/how-we-help/tab-physically-hammer.png';
-const tabPhilosophyIconSrc = '/icons/how-we-help/tab-philosophy-users.png';
+const cards = [
+	{
+		href: '/services/',
+		imageSrc: '/images/services/structural-design.png',
+		imageAlt: 'Placeholder — renovation services',
+		title: 'Our Services',
+		description:
+			'From structure and electrics to fixtures, finishes and landscaping — explore every pillar of our renovation delivery, scoped and coordinated by one team.',
+		buttonLabel: 'See all our services',
+	},
+	{
+		href: '/how-we-work/',
+		imageSrc: '/images/how-we-work/know-how.png',
+		imageAlt: 'Placeholder — how we work',
+		title: 'How We Work',
+		description:
+			'We are the keystone to your project — listening carefully, managing trades, and keeping your renovation on track from first conversation through to handover.',
+		buttonLabel: 'See more about how we work',
+	},
+] as const;
 ---
 
 <section class="how-we-help" aria-labelledby="how-we-help-heading">
 	<div class="how-we-help__inner">
-		<h2 id="how-we-help-heading" class="how-we-help__title type-h2-48-700 kr-motion-enter-fade-up-sm">The Way We Work</h2>
+		<header class="how-we-help__header">
+			<h2 id="how-we-help-heading" class="how-we-help__section-title type-h2-48-700 kr-motion-enter-fade-up-sm">
+				Explore Keystone
+			</h2>
+			<p class="how-we-help__intro type-large-body-18-400 kr-motion-enter-fade-up-sm kr-motion-delay-1">
+				Two ways to learn more about what we deliver and how we run your project.
+			</p>
+		</header>
 
-		<div class="how-we-help__tabs kr-motion-enter-fade-up-sm kr-motion-delay-1" role="tablist" aria-label="The way we work">
-			<button
-				type="button"
-				class="how-we-help__tab is-active"
-				role="tab"
-				id="how-tab-physical"
-				aria-selected="true"
-				aria-controls="how-panel-physical"
-				data-how-tab="physical"
-			>
-				<span class="how-we-help__tab-icon" aria-hidden="true">
-					<img
-						class="how-we-help__tab-icon-img"
-						src={tabPhysicallyIconSrc}
-						alt=""
-						width="28"
-						height="28"
-						decoding="async"
-					/>
-				</span>
-				<span class="how-we-help__tab-label">Physically</span>
-				<span class="how-we-help__tab-sub">The structural elements</span>
-			</button>
-			<button
-				type="button"
-				class="how-we-help__tab"
-				role="tab"
-				id="how-tab-personal"
-				aria-selected="false"
-				aria-controls="how-panel-personal"
-				data-how-tab="personal"
-			>
-				<span class="how-we-help__tab-icon" aria-hidden="true">
-					<img
-						class="how-we-help__tab-icon-img"
-						src={tabPhilosophyIconSrc}
-						alt=""
-						width="28"
-						height="28"
-						decoding="async"
-					/>
-				</span>
-				<span class="how-we-help__tab-label">The Philosophy</span>
-				<span class="how-we-help__tab-sub">Project Management</span>
-			</button>
-		</div>
-
-		<div
-			id="how-panel-physical"
-			class="how-we-help__panel"
-			role="tabpanel"
-			aria-labelledby="how-tab-physical"
-			data-how-panel="physical"
-		>
-			<p class="how-we-help__intro type-large-body-18-400 kr-motion-enter-fade-up-sm kr-motion-delay-2">{physicallyIntro}</p>
-			<div class="how-we-help__grid">
-				{
-					servicesPhysicalCards.map(({ title, body, iconSrc }, i) => (
-						<article
-							class:list={[
-								'how-we-help__card',
-								'kr-motion-enter-fade-up-sm',
-								i % 3 === 1 ? 'kr-motion-delay-1' : undefined,
-								i % 3 === 2 ? 'kr-motion-delay-2' : undefined,
-							]}
-						>
-							<div class="how-we-help__card-icon" aria-hidden="true">
-								<img
-									class="how-we-help__card-icon-img"
-									src={iconSrc}
-									alt=""
-									width="22"
-									height="22"
-									decoding="async"
-								/>
-							</div>
+		<div class="how-we-help__grid">
+			{
+				cards.map(({ href, imageSrc, imageAlt, title, description, buttonLabel }, i) => (
+					<article
+						class:list={[
+							'how-we-help__card',
+							'kr-motion-enter-fade-up-sm',
+							i === 1 ? 'kr-motion-delay-1' : undefined,
+						]}
+					>
+						<a class="how-we-help__media-link" href={href} tabindex="-1" aria-hidden="true">
+							<img
+								class="how-we-help__image"
+								src={imageSrc}
+								alt={imageAlt}
+								width="640"
+								height="400"
+								loading="lazy"
+								decoding="async"
+							/>
+						</a>
+						<div class="how-we-help__body">
 							<h3 class="how-we-help__card-title type-h3-20-700">{title}</h3>
-							<p class="how-we-help__card-body type-large-body-18-400">{body}</p>
-						</article>
-					))
-				}
-			</div>
-		</div>
-
-		<div
-			id="how-panel-personal"
-			class="how-we-help__panel"
-			role="tabpanel"
-			aria-labelledby="how-tab-personal"
-			data-how-panel="personal"
-			hidden
-		>
-			<p class="how-we-help__intro type-large-body-18-400 kr-motion-enter-fade-up-sm kr-motion-delay-2">{personalIntro}</p>
-			<div class="how-we-help__grid">
-				{
-					philosophyCards.map(({ title, body, iconSrc }, i) => (
-						<article
-							class:list={[
-								'how-we-help__card',
-								'kr-motion-enter-fade-up-sm',
-								i % 3 === 1 ? 'kr-motion-delay-1' : undefined,
-								i % 3 === 2 ? 'kr-motion-delay-2' : undefined,
-							]}
-						>
-							<div class="how-we-help__card-icon" aria-hidden="true">
-								<img
-									class="how-we-help__card-icon-img"
-									src={iconSrc}
-									alt=""
-									width="22"
-									height="22"
-									decoding="async"
-								/>
-							</div>
-							<h3 class="how-we-help__card-title type-h3-20-700">{title}</h3>
-							<p class="how-we-help__card-body type-large-body-18-400">{body}</p>
-						</article>
-					))
-				}
-			</div>
+							<p class="how-we-help__description type-large-body-18-400">{description}</p>
+							<a class="how-we-help__btn type-button-16-700" href={href}>
+								{buttonLabel}
+							</a>
+						</div>
+					</article>
+				))
+			}
 		</div>
 	</div>
 </section>
-
-<script>
-	(() => {
-		const section = document.querySelector('.how-we-help');
-		if (!section) return;
-
-		const tabs = [...section.querySelectorAll('[data-how-tab]')];
-		const panels = [...section.querySelectorAll('[data-how-panel]')];
-		if (!tabs.length || !panels.length) return;
-
-		function activate(key) {
-			tabs.forEach((btn) => {
-				const on = btn.getAttribute('data-how-tab') === key;
-				btn.classList.toggle('is-active', on);
-				btn.setAttribute('aria-selected', on ? 'true' : 'false');
-			});
-			panels.forEach((panel) => {
-				const on = panel.getAttribute('data-how-panel') === key;
-				panel.toggleAttribute('hidden', !on);
-			});
-		}
-
-		tabs.forEach((btn) => {
-			btn.addEventListener('click', () => activate(btn.getAttribute('data-how-tab') || 'physical'));
-		});
-	})();
-</script>
 
 <style>
 	.how-we-help {
@@ -179,146 +78,45 @@ const tabPhilosophyIconSrc = '/icons/how-we-help/tab-philosophy-users.png';
 		margin: 0 auto;
 	}
 
-	.how-we-help__title {
-		margin: 0 0 1.75rem;
-		color: var(--color-dark-gray);
-		text-transform: none;
-		letter-spacing: 0.03em;
-	}
-
-	.how-we-help__tabs {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 0.65rem;
-		margin-bottom: 1.75rem;
-	}
-
-	@media (min-width: 40rem) {
-		.how-we-help__tabs {
-			gap: 0.85rem;
-		}
-	}
-
-	.how-we-help__tab {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 0.35rem;
-		padding: 1.1rem 0.75rem 1.25rem;
-		border: 1px solid color-mix(in srgb, var(--color-dark-gray) 10%, var(--color-white));
-		border-radius: 8px;
-		background: var(--color-white);
-		color: var(--color-dark-gray);
-		cursor: pointer;
-		font-family: var(--font-heading);
+	.how-we-help__header {
 		text-align: center;
-		transition:
-			background var(--motion-duration-200) var(--motion-ease-standard),
-			color var(--motion-duration-200) var(--motion-ease-standard),
-			border-color var(--motion-duration-200) var(--motion-ease-standard),
-			box-shadow var(--motion-duration-200) var(--motion-ease-standard);
+		max-width: var(--layout-max-48);
+		margin: 0 auto 2.75rem;
 	}
 
-	.how-we-help__tab:hover:not(.is-active) {
-		border-color: color-mix(in srgb, var(--color-dark-gray) 18%, var(--color-white));
-		background: var(--color-white-smoke);
-	}
-
-	.how-we-help__tab.is-active {
-		background: color-mix(in srgb, var(--color-dark-gray) 38%, var(--color-gray));
-		color: var(--color-white);
-		border-color: transparent;
-		box-shadow:
-			0 2px 6px rgba(26, 27, 27, 0.12),
-			0 8px 22px rgba(26, 27, 27, 0.1);
-	}
-
-	.how-we-help__tab:focus-visible {
-		outline: 2px solid var(--color-card-icon-gold);
-		outline-offset: 3px;
-	}
-
-	.how-we-help__tab-icon {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0.92;
-	}
-
-	.how-we-help__tab-icon-img {
-		display: block;
-		width: 1.75rem;
-		height: 1.75rem;
-		object-fit: contain;
-	}
-
-	.how-we-help__tab.is-active .how-we-help__tab-icon-img {
-		filter: brightness(0) invert(1);
-	}
-
-	.how-we-help__tab:not(.is-active) .how-we-help__tab-icon-img {
-		opacity: 0.78;
-	}
-
-	.how-we-help__tab-label {
-		font-weight: 700;
-		font-size: 1.0625rem;
-		letter-spacing: 0.03em;
-		text-transform: none;
-	}
-
-	.how-we-help__tab-sub {
-		font-family: var(--font-body);
-		font-weight: 400;
-		font-size: 0.8125rem;
-		line-height: 1.35;
-		opacity: 0.92;
-	}
-
-	.how-we-help__tab:not(.is-active) .how-we-help__tab-sub {
-		color: color-mix(in srgb, var(--color-dark-gray) 55%, var(--color-gray));
+	.how-we-help__section-title {
+		margin: 0 0 1rem;
+		color: var(--color-dark-gray);
 	}
 
 	.how-we-help__intro {
-		margin: 0 auto 1.75rem;
-		max-width: var(--layout-max-44);
+		margin: 0;
 		text-align: center;
-		color: color-mix(in srgb, var(--color-dark-gray) 88%, var(--color-gray));
-	}
-
-	.how-we-help__intro strong {
-		font-weight: 700;
-		color: var(--color-dark-gray);
+		color: color-mix(in srgb, var(--color-dark-gray) 78%, var(--color-gray));
 	}
 
 	.how-we-help__grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1.25rem;
+		gap: 1.5rem;
 	}
 
-	@media (min-width: 40rem) {
+	@media (min-width: 52rem) {
 		.how-we-help__grid {
 			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 960px) {
-		.how-we-help__grid {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 1.5rem;
+			gap: 1.75rem;
 		}
 	}
 
 	.how-we-help__card {
+		display: flex;
+		flex-direction: column;
 		background: var(--color-white);
 		border-radius: 10px;
-		padding: 1.35rem 1.25rem 1.5rem;
+		overflow: hidden;
 		box-shadow:
 			0 1px 2px rgba(26, 27, 27, 0.05),
 			0 6px 18px rgba(26, 27, 27, 0.07);
-		text-align: left;
 		transition:
 			box-shadow var(--motion-duration-280) var(--motion-ease-standard),
 			transform var(--motion-duration-280) var(--motion-ease-standard);
@@ -344,39 +142,84 @@ const tabPhilosophyIconSrc = '/icons/how-we-help/tab-philosophy-users.png';
 		}
 	}
 
-	.how-we-help__card-icon {
-		width: 2.75rem;
-		height: 2.75rem;
-		margin-bottom: 1rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 50%;
-		background: var(--color-card-icon-gold);
-		color: var(--color-white);
+	.how-we-help__media-link {
+		display: block;
+		overflow: hidden;
+		line-height: 0;
 	}
 
-	.how-we-help__card-icon-img {
+	.how-we-help__image {
 		display: block;
-		width: 1.375rem;
-		height: 1.375rem;
-		object-fit: contain;
-		filter: brightness(0) invert(1);
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		object-position: center;
+		transition: transform var(--motion-duration-380) var(--motion-ease-out-expo);
+	}
+
+	.how-we-help__card:hover .how-we-help__image,
+	.how-we-help__card:focus-within .how-we-help__image {
+		transform: scale(1.03);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.how-we-help__image {
+			transition: none;
+		}
+
+		.how-we-help__card:hover .how-we-help__image,
+		.how-we-help__card:focus-within .how-we-help__image {
+			transform: none;
+		}
+	}
+
+	.how-we-help__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: clamp(1.25rem, 2.5vw, 1.75rem);
 	}
 
 	.how-we-help__card-title {
-		margin: 0 0 0.65rem;
-		text-align: left;
+		margin: 0 0 0.75rem;
 		text-transform: uppercase;
 		color: var(--color-dark-gray);
 	}
 
-	.how-we-help__card-body {
-		margin: 0;
-		text-align: left;
-		white-space: normal;
+	.how-we-help__description {
+		margin: 0 0 1.5rem;
+		flex: 1;
 		color: color-mix(in srgb, var(--color-dark-gray) 82%, var(--color-gray));
-		font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
-		line-height: 1.6;
+		text-wrap: pretty;
+	}
+
+	.how-we-help__btn {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		padding: 0.85rem 1.35rem;
+		text-decoration: none;
+		color: var(--color-white);
+		background: var(--color-dark-khaki);
+		border-radius: 3px;
+		transition:
+			filter var(--motion-duration-200) var(--motion-ease-standard),
+			transform var(--motion-duration-200) var(--motion-ease-standard);
+	}
+
+	.how-we-help__btn:hover {
+		filter: brightness(1.06);
+	}
+
+	.how-we-help__btn:focus-visible {
+		outline: 2px solid var(--color-card-icon-gold);
+		outline-offset: 3px;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.how-we-help__btn {
+			transition: none;
+		}
 	}
 </style>

@@ -1,22 +1,37 @@
 ---
 const intro =
-	'Our focus is the same regardless of your objectives, size or type of property. Firstly, we listen to you and get to understand your renovating needs. And then, we match the right skills and materials to meet both the budget & renovation brief.';
+	'Our focus is the same regardless of your objectives, size or type of property.';
 
 const cards = [
 	{
-		title: 'Your Home Renovation',
-		body: 'Do you dream of making your home the \u201cforever home\u201d?\n\nOr are you needing to rescue a rogue DIY project?\n\nWhatever stage and budget you are at - Keystone Renovations is all about getting the job done.',
-		iconSrc: '/icons/services/home.svg',
+		title: 'Dream Home Ideas',
+		body: 'Planning the home you want to grow into? We help shape your forever-home vision into a clear brief, sensible phases, and workmanship you will love living with.',
+		imageSrc: '/images/hero-interior.jpg',
+		imageAlt: 'Placeholder — dream home renovation',
 	},
 	{
-		title: 'Landlord Revamps',
-		body: 'Cost-driven \u2013 yet practical and durable solutions completed on time for your next tenant.\n\nWe understand your need for expediency and commercial delivery.',
-		iconSrc: '/icons/services/calculator.svg',
+		title: 'Make Overs',
+		body: 'Room-by-room refreshes or a full property update — we match the right trades, materials and finish to your budget so the transformation feels intentional, not piecemeal.',
+		imageSrc: '/images/services/fixtures-fittings.png',
+		imageAlt: 'Placeholder — property make over',
+	},
+	{
+		title: 'DIY Rescues',
+		body: 'Inherited a well-meant DIY job that needs professional finish? We step in calmly, assess what is salvageable, and put the structure, services and surfaces right.',
+		imageSrc: '/images/services/structural-design.png',
+		imageAlt: 'Placeholder — DIY rescue project',
 	},
 	{
 		title: 'Getting Ready to Sell',
-		body: 'Selling your home can be one of the most stressful and emotional experiences to undertake.\n\nSo our job is not only to make your property stand out, but to look after you throughout the process too.\n\nWith over 10 years\u2019 experience working with the UK\u2019s Leading Home Stagers & Nationwide Estate Agents we strive to ensure your renovating budget returns maximum impact for attracting the right potential buyers.',
-		iconSrc: '/icons/services/users-presale.svg',
+		body: 'Selling can be stressful. We help your property stand out for the right buyers — with over ten years working alongside stagers and estate agents across the UK.',
+		imageSrc: '/images/services/decor-landscaping.png',
+		imageAlt: 'Placeholder — preparing a home to sell',
+	},
+	{
+		title: 'Tenancy Changeovers',
+		body: 'Practical, durable landlord revamps delivered on schedule. We understand commercial timelines and deliver cost-conscious work that is ready for your next tenant.',
+		imageSrc: '/images/services/electrical-plumbing.png',
+		imageAlt: 'Placeholder — tenancy changeover revamp',
 	},
 ] as const;
 ---
@@ -32,7 +47,7 @@ const cards = [
 
 		<div class="complete-solutions__grid">
 			{
-				cards.map(({ title, body, iconSrc }, i) => (
+				cards.map(({ title, body, imageSrc, imageAlt }, i) => (
 					<article
 						class:list={[
 							'complete-solutions__card',
@@ -41,18 +56,21 @@ const cards = [
 							i % 3 === 2 ? 'kr-motion-delay-2' : undefined,
 						]}
 					>
-						<div class="complete-solutions__icon-wrap" aria-hidden="true">
+						<div class="complete-solutions__media">
 							<img
-								class="complete-solutions__icon-svg"
-								src={iconSrc}
-								alt=""
-								width="24"
-								height="24"
+								class="complete-solutions__image"
+								src={imageSrc}
+								alt={imageAlt}
+								width="640"
+								height="400"
+								loading="lazy"
 								decoding="async"
 							/>
 						</div>
-						<h3 class="complete-solutions__card-title type-h3-20-700">{title}</h3>
-						<p class="complete-solutions__card-body type-large-body-18-400">{body}</p>
+						<div class="complete-solutions__body">
+							<h3 class="complete-solutions__card-title type-h3-20-700">{title}</h3>
+							<p class="complete-solutions__card-body type-large-body-18-400">{body}</p>
+						</div>
 					</article>
 				))
 			}
@@ -69,6 +87,7 @@ const cards = [
 	.complete-solutions__inner {
 		max-width: var(--layout-max-72);
 		margin: 0 auto;
+		min-width: 0;
 	}
 
 	.complete-solutions__header {
@@ -90,26 +109,45 @@ const cards = [
 
 	.complete-solutions__grid {
 		display: grid;
-		grid-template-columns: 1fr;
+		grid-template-columns: minmax(0, 1fr);
 		gap: 1.5rem;
 		align-items: stretch;
 	}
 
-	@media (min-width: 900px) {
+	@media (min-width: 36rem) {
 		.complete-solutions__grid {
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	/* 3×2 — top row of three, bottom row of two centred */
+	@media (min-width: 52rem) {
+		.complete-solutions__grid {
+			grid-template-columns: repeat(6, minmax(0, 1fr));
 			gap: 1.75rem;
+		}
+
+		.complete-solutions__card {
+			grid-column: span 2;
+		}
+
+		.complete-solutions__card:nth-child(4) {
+			grid-column: 1 / span 3;
+		}
+
+		.complete-solutions__card:nth-child(5) {
+			grid-column: 4 / span 3;
 		}
 	}
 
 	.complete-solutions__card {
-		background: var(--color-white-smoke);
-		padding: var(--card-pad-complete);
+		min-width: 0;
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
+		background: var(--color-white-smoke);
 		text-align: left;
 		border-radius: 10px;
+		overflow: hidden;
 		box-shadow:
 			0 1px 2px rgba(26, 27, 27, 0.04),
 			0 4px 14px rgba(26, 27, 27, 0.06),
@@ -137,38 +175,55 @@ const cards = [
 		}
 	}
 
-	.complete-solutions__icon-wrap {
-		flex-shrink: 0;
-		width: 3.5rem;
-		height: 3.5rem;
-		margin-bottom: 1.25rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--color-card-icon-gold);
-		color: var(--color-white);
-		border-radius: 50%;
+	.complete-solutions__media {
+		overflow: hidden;
+		line-height: 0;
 	}
 
-	.complete-solutions__icon-svg {
+	.complete-solutions__image {
 		display: block;
-		width: 1.5rem;
-		height: 1.5rem;
-		object-fit: contain;
-		filter: brightness(0) invert(1);
+		width: 100%;
+		height: clamp(6rem, 13vw, 9rem);
+		object-fit: cover;
+		object-position: center;
+		transition: transform var(--motion-duration-380) var(--motion-ease-out-expo);
+	}
+
+	.complete-solutions__card:hover .complete-solutions__image {
+		transform: scale(1.03);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.complete-solutions__image {
+			transition: none;
+		}
+
+		.complete-solutions__card:hover .complete-solutions__image {
+			transform: none;
+		}
+	}
+
+	.complete-solutions__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		padding: clamp(1.15rem, 2.5vw, 1.5rem);
 	}
 
 	.complete-solutions__card-title {
-		margin: 0 0 0.875rem;
+		margin: 0 0 0.75rem;
 		text-align: left;
 		text-transform: uppercase;
 		color: var(--color-dark-gray);
+		overflow-wrap: break-word;
 	}
 
 	.complete-solutions__card-body {
 		margin: 0;
 		text-align: left;
-		white-space: pre-line;
+		text-wrap: pretty;
 		color: color-mix(in srgb, var(--color-dark-gray) 82%, var(--color-gray));
+		font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);
+		line-height: 1.55;
 	}
 </style>

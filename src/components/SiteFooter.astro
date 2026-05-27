@@ -16,15 +16,10 @@ const serviceChoices = [
 	{ value: 'other', label: 'Other' },
 ] as const;
 
-/** Footer “at a glance” — short labels; keep in sync with real capabilities. */
-const footerFocusAreas = [
-	'Full refurbishments',
-	'Kitchens & bathrooms',
-	'Landlord refreshes',
-	'Pre-sale preparation',
-	'Extensions & alterations',
-	'Finishing & handover care',
-] as const;
+/** Footer “at a glance” — keep in sync with the contact form service dropdown. */
+const footerFocusAreas = serviceChoices
+	.filter(({ value }) => value !== 'other')
+	.map(({ label }) => label);
 ---
 
 <footer class="site-footer" id="site-footer">
@@ -42,9 +37,6 @@ const footerFocusAreas = [
 					/>
 				</a>
 				<p class="site-footer__kicker">The Keystone touch</p>
-				<p class="site-footer__line">
-					We are the Keystone to your Project{'\u2013'}the centre point from which all else depends
-				</p>
 				<p class="site-footer__body">{siteConfig.tagline}</p>
 				<hr class="site-footer__divider" aria-hidden="true" />
 				<div class="site-footer__focus">
@@ -356,19 +348,6 @@ const footerFocusAreas = [
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--color-dark-gray);
-	}
-
-	.site-footer__line {
-		margin: 0 0 1.1rem;
-		max-width: min(100%, 28rem);
-		font-family: var(--font-heading);
-		font-weight: 500;
-		font-style: italic;
-		font-size: clamp(1rem, 0.92rem + 0.35vw, 1.1875rem);
-		line-height: 1.55;
-		letter-spacing: 0.02em;
-		color: color-mix(in srgb, var(--color-dark-khaki) 35%, var(--color-dark-gray));
-		text-wrap: pretty;
 	}
 
 	.site-footer__body {
